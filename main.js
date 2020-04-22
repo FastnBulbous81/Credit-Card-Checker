@@ -43,6 +43,7 @@ const validatedCred = array => {
             sum += array[i];
         };
     };
+    array.reverse();
     return (sum % 10 === 0);
 };
 
@@ -57,3 +58,5 @@ const findInvalidCards = batchArray => {
     };
     return invalidCards;
 };
+
+console.log(findInvalidCards(batch))
