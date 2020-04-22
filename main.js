@@ -26,6 +26,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 
 // Returns true if card number in array is valid based on Luhn algorithm:
+
 const validatedCred = array => {
     let sum = 0;
     array.reverse();
@@ -38,9 +39,21 @@ const validatedCred = array => {
                 sum += array[i] * 2;
             }
         } else {
-            // Adds the rest of the digits to the sum:
+            // Adds the rest of the digits to the sum
             sum += array[i];
         };
     };
     return (sum % 10 === 0);
+};
+
+// Returns an array of all invalid card numbers as nested arrays:
+
+const findInvalidCards = batchArray => {
+    const invalidCards = [];
+    for (let card = 0; card < batchArray.length; card++) {
+        if (validatedCred(batchArray[card]) === false) {
+            invalidCards.push(batchArray[card]);
+        };
+    };
+    return invalidCards;
 };
