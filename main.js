@@ -66,12 +66,14 @@ const idInvalidCardCompanies = invCardArray => {
     for (let card = 0; card < invCardArray.length; card++) {
         fullNum = invCardArray[card];
         checkNum = fullNum[0];
+        // Skips numbers already existing in companyArray, then adds the number if it doesn't already exist there:
         if (companyArray.includes(checkNum)) {
             continue;
         } else if (checkNum === 3 || checkNum === 4 || checkNum === 5 || checkNum === 6) {
             companyArray.push(checkNum);
         }
     }
+    // Iterates through companyArray to convert numbers into corresponding strings of card company names:
     for (let compNum = 0; compNum < companyArray.length; compNum++) {
         switch (companyArray[compNum]) {
             case 3:
@@ -84,14 +86,15 @@ const idInvalidCardCompanies = invCardArray => {
                 companyArray[compNum] = 'Mastercard';
                 break;
             case 6:
-                companyArray[compNum] = 'Discover'
+                companyArray[compNum] = 'Discover';
                 break;
         }
     }
+    // Checks if output array contains any companies:
     if (companyArray && companyArray.length > 0) {
         return companyArray;
     }   else {
-        return 'Company not found'
+        return 'Company not found';
     }
 }
 
