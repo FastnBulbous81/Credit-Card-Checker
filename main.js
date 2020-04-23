@@ -59,4 +59,41 @@ const findInvalidCards = batchArray => {
     return invalidCards;
 };
 
-console.log(findInvalidCards(batch))
+// Identifies credit card company by first digits in invalid credit card number array and returns an array of card companies with no duplicates
+
+const idInvalidCardCompanies = invCardArray => {
+    companyArray = [];
+    for (let card = 0; card < invCardArray.length; card++) {
+        fullNum = invCardArray[card];
+        checkNum = fullNum[0];
+        if (companyArray.includes(checkNum)) {
+            continue;
+        } else if (checkNum === 3 || checkNum === 4 || checkNum === 5 || checkNum === 6) {
+            companyArray.push(checkNum);
+        }
+    }
+    for (let compNum = 0; compNum < companyArray.length; compNum++) {
+        switch (companyArray[compNum]) {
+            case 3:
+                companyArray[compNum] = 'Amex (American Express)';
+                break;
+            case 4:
+                companyArray[compNum] = 'Visa';
+                break;
+            case 5:
+                companyArray[compNum] = 'Mastercard';
+                break;
+            case 6:
+                companyArray[compNum] = 'Discover'
+                break;
+        }
+    }
+    if (companyArray && companyArray.length > 0) {
+        return companyArray;
+    }   else {
+        return 'Company not found'
+    }
+}
+
+
+console.log(idInvalidCardCompanies(findInvalidCards(batch)))
