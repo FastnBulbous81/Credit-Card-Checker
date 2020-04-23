@@ -32,15 +32,16 @@ const validatedCred = array => {
     array.reverse();
     for (let i = 0; i < array.length; i++) {
         // Handles every other digit starting from the right:
+        num = array[i]
         if (i % 2 != 0) {
-            if (array[i] * 2 > 9) {
-                sum += array[i] * 2 - 9;
+            if (num * 2 > 9) {
+                sum += num * 2 - 9;
             } else {
-                sum += array[i] * 2;
+                sum += num * 2;
             }
         } else {
             // Adds the rest of the digits to the sum
-            sum += array[i];
+            sum += num;
         };
     };
     array.reverse();
@@ -74,19 +75,19 @@ const idInvalidCardCompanies = invCardArray => {
         }
     }
     // Iterates through companyArray to convert numbers into corresponding strings of card company names:
-    for (let compNum = 0; compNum < companyArray.length; compNum++) {
-        switch (companyArray[compNum]) {
+    for (let num = 0; num < companyArray.length; num++) {
+        switch (companyArray[num]) {
             case 3:
-                companyArray[compNum] = 'Amex (American Express)';
+                companyArray[num] = 'Amex (American Express)';
                 break;
             case 4:
-                companyArray[compNum] = 'Visa';
+                companyArray[num] = 'Visa';
                 break;
             case 5:
-                companyArray[compNum] = 'Mastercard';
+                companyArray[num] = 'Mastercard';
                 break;
             case 6:
-                companyArray[compNum] = 'Discover';
+                companyArray[num] = 'Discover';
                 break;
         }
     }
